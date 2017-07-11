@@ -1,0 +1,74 @@
+[
+    {
+        "argument": "ivan -location",
+        "results": [
+        {
+            "data": "Leeds, UK"
+        }
+        ]
+    },
+    {
+        "argument": "ivan -cv",
+        "results": [
+        {
+            "link": "https://www.google.co.uk",
+            "data": "ivanseed.pdf"
+        }
+        ]
+    },
+    {
+        "argument": "ivan -role",
+        "results": [
+        {
+            "data": "Associate Software Developer, Sky PLC"
+        }
+        ]
+    },
+    {
+        "argument": "ivan -social",
+        "results": [
+        {
+            "link": "https://github.com/ivanseed",
+            "data": "GitHub"
+        },
+        {
+            "link": "https://www.linkedin.com/in/iseed/",
+            "data": "LinkedIn"
+        }
+        ]
+    },
+    {
+        "argument": "ivan -education",
+        "results" : [
+        {
+            "data": "Computer Science BSc (Honours), Newcastle University"
+        }
+        ]
+    },
+    {
+        "argument": "ivan -skills",
+        "results": [
+        {
+            "data": "Java"
+        },
+        {
+            "data": "JavaScript"
+        },
+        {
+            "data": "PHP"
+        },
+        {
+            "data": "AWS"
+        },
+        {
+            "data": "ReactJS"
+        },
+        {
+            "data": "TDD"
+        },
+        {
+            "data": "Agile Development"
+        }
+        ]
+    }
+]

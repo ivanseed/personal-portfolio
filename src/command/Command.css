@@ -1,0 +1,30 @@
+.command:first-child {
+  padding-top: 35px; }
+
+.command:last-child {
+  padding-bottom: 60px; }
+
+.command {
+  margin-bottom: 25px;
+  margin-left: 35px;
+  margin-right: 35px;
+  line-height: 24px; }
+  .command .command-argument {
+    color: #f7f7f7; }
+    .command .command-argument:before {
+      content: '$ '; }
+  .command .command-result {
+    color: #FFFFA6; }
+    .command .command-result .command-result__link {
+      color: #3df4dc;
+      text-decoration: none; }
+      .command .command-result .command-result__link:hover {
+        transition: background-color 0.5s ease;
+        background-color: rgba(53, 196, 255, 0.3); }
+  .command .terminal-indicator {
+    background: rgba(247, 247, 247, 0.5);
+    animation: caret 1s steps(1) infinite; }
+
+@keyframes caret {
+  50% {
+    background-color: transparent; } }

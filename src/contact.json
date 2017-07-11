@@ -1,0 +1,13 @@
+{
+    "email": "hello@ivanseed.co.uk",
+    "links": [
+        {
+            "icon": "./images/github.png",
+            "link": "https://github.com/ivanseed"
+        },
+        {
+            "icon": "./images/linkedin.svg",
+            "link": "https://www.linkedin.com/in/iseed/"
+        }
+    ]
+}

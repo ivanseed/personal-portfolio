@@ -1,0 +1,22 @@
+.contact {
+  margin: 0 auto 100px auto;
+  width: 90vw;
+  max-width: 1000px;
+  text-align: center; }
+  .contact .contact-links {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .contact h3 {
+    margin-bottom: 50px;
+    width: 100%;
+    font-size: 40px; }
+    @media screen and (max-width: 750px) {
+      .contact h3 {
+        font-size: 30px; } }
+    .contact h3 a {
+      text-decoration: none;
+      color: #BDF271;
+      transition: all 0.5s ease; }
+      .contact h3 a:hover {
+        color: #7eb233; }

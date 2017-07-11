@@ -1,0 +1,44 @@
+.terminal {
+    width: 90vw;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 50px 100px rgba(50,50,93,.15), 0 15px 35px rgba(50,50,93,.2), 0 5px 15px rgba(0,0,0,.12);
+
+    .terminal-header {
+        height: 28px;
+        border-radius: 10px 10px 0 0;
+        background-color: #e4e3e5;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .terminal-header__button {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-left: 9px;
+        }
+
+        .button-red {
+            background-color: #f96256;
+            border: solid 1px #f65549;
+        }
+
+        .button-yellow {
+            background-color: #fdbc3d;
+            border: solid 1px #ffb524;
+        }
+
+        .button-green {
+            background-color: #33c948;
+            border: solid 1px #2dbb41;
+        }
+    }
+
+    .terminal-window {
+        background-color: #4c647c;
+        border-radius: 0 0 4px 4px;
+        font-family: monospace, 'Monaco', Consolas, "Lucida Console";
+        font-size: 18px;
+    }
+}

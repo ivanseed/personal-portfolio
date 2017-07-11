@@ -1,0 +1,67 @@
+[
+    {
+        "title": "Sky Sport Germany",
+        "description": "Built from the ground up, Sky Sport Germany has been the biggest and most rewarding porject I have worked on. I had a fantastic opportunity to work with an all start team to deliver a brand new Sports portal for German market from the ground up. Got the opportunity to work in an Agile environment which helped me fine tune my Software Engineering practices while liasing with key stake holders.",
+        "image": {
+            "source": "./images/skysport.jpg",
+            "alt": "Sky Sport Germany"
+        },
+        "tags": [
+            {
+                "text": "PHP"
+            },
+            {
+                "text": "Symfony"
+            },
+            {
+                "text": "NodeJS"
+            },
+            {
+                "text": "Docker"
+            },
+            {
+                "text": "HTML"
+            },
+            {
+                "text": "CSS"
+            },
+            {
+                "text": "SASS"
+            }
+        ],
+        "buttons": [
+            {
+                "text": "View Site",
+                "link": "https://sport.sky.de/"
+            }
+        ]
+    },
+    {
+        "title": "Portfolio",
+        "description": "Got to fill up this project list somehow, am I right? My portfolio has gone through many different designs, however after being inspired by a post online of a data driven portfolio I created this. Sections powered by JSON files so I need only update them. the entire project is on GitHub if you want to see how it works it was also was a great excuse to practice some ReactJS!",
+        "image": {
+            "source": "./images/portfolio.jpg",
+            "alt": "Portfolio"
+        },
+        "tags": [
+            {
+                "text": "ReactJS"
+            },
+            {
+                "text": "HTML"
+            },
+            {
+                "text": "SCSS"
+            },
+            {
+                "text": "Webkit"
+            }
+        ],
+        "buttons": [
+            {
+                "text": "View Source",
+                "link": "https://github.com/ivanseed/ivanseed.github.io"
+            }
+        ]
+    }
+]

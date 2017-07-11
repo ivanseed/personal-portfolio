@@ -1,0 +1,111 @@
+.navbar {
+    margin: 10px auto;
+    width: 90vw;
+    max-width: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+        font-family: monospace, 'Monaco', Consolas, "Lucida Console";
+        height: 55px;
+        width: 55px;
+    
+        .logo-header {
+            height: 10px;
+            border-radius: 5px 5px 0 0;
+            background-color: #e4e3e5;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .logo-header__button {
+                width: 3px;
+                height: 3px;
+                border-radius: 50%;
+                margin-left: 3px;
+            }
+
+            .button-red {
+                background-color: #f96256;
+                border: solid 1px #f65549;
+            }
+
+            .button-yellow {
+                background-color: #fdbc3d;
+                border: solid 1px #ffb524;
+            }
+
+            .button-green {
+                background-color: #33c948;
+                border: solid 1px #2dbb41;
+            }
+        }
+
+        .logo-window {
+            height: 40px;
+            background-color: #4c647c;
+            border-radius: 0 0 5px 5px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            span {
+                margin-top: -1px;
+            }
+
+            .logo-window__prefix {
+                margin-left: 4px;
+                margin-right: 2px;
+                font-size: 23px;
+                color: #fff;
+            }
+
+            .logo-window__initials {
+                font-size: 26px;
+                color: #FFFFA6;
+            }
+        }
+    }
+
+    .links {
+
+        .link {
+            margin-right: 50px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 22px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            position: relative;
+            transition: all 0.4s ease;
+            text-shadow: 1px 1px 7px rgba(40, 40, 40, 0.4);
+
+            @media screen and (max-width: 500px) {
+                font-size: 18px;
+                margin-right: 30px;
+            }
+
+            &:after {
+                display: block;
+                position: absolute;
+                left: 0;
+                bottom: -13px;
+                width: 0;
+                height: 5px;
+                background-color: #BDF271;
+                transition: width 0.4s;
+                content: "";
+            }
+
+            &:hover {
+                color: #BDF271;
+                cursor: pointer;
+
+                &:after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

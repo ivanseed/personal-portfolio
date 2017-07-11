@@ -1,0 +1,50 @@
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  overflow: hidden;
+  max-width: 1000px;
+  height: 500px;
+  margin: 0 auto 50px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.05), 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all .5s ease;
+  overflow: hidden; }
+  .tile .tile-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: all 1s ease; }
+  .tile .tile-image-splitter {
+    position: absolute;
+    top: 0;
+    left: 430px;
+    height: 100%;
+    width: 100px;
+    background: linear-gradient(to right, transparent, #fff, #fff); }
+  .tile .tile-content {
+    padding: 20px 40px 50px 10px;
+    width: 40%;
+    z-index: 9;
+    transition: all 1s ease;
+    line-height: 140%; }
+    .tile .tile-content h3 {
+      font-size: 25px;
+      font-weight: 900; }
+    .tile .tile-content p {
+      font-size: 16px;
+      margin-bottom: 20px; }
+  @media screen and (max-width: 900px) {
+    .tile {
+      height: auto; }
+      .tile .tile-content {
+        margin: 0 auto 30px auto;
+        padding: 0;
+        width: 90%;
+        transition: all 1s ease; }
+      .tile .tile-image {
+        opacity: 0.05;
+        transition: all 1s ease; } }
