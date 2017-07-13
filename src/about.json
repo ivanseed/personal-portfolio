@@ -11,7 +11,7 @@
         "argument": "ivan -cv",
         "results": [
         {
-            "link": "https://www.google.co.uk",
+            "link": "./cv.pdf",
             "data": "ivanseed.pdf"
         }
         ]
