@@ -1,5 +1,6 @@
 {
   "name": "ivanseed.github.io",
+  "homepage": "https://ivanseed.github.io/personal-portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
