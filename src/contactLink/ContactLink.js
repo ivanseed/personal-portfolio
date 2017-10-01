@@ -7,7 +7,7 @@ class ContactLink extends Component {
         return (
           <div className="contact-link">
               <a href={this.props.link.link} rel="noopener noreferrer" target="_blank">
-                  <img src={this.props.link.icon} height="50px" alt={this.props.link.link} />
+                  <img src={this.props.link.icon} draggable="false" height="50px" alt={this.props.link.link} />
               </a>
           </div>
         )

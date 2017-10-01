@@ -9,7 +9,7 @@ class Tile extends Component {
         return (
             <div className="tile">
                 <div className="tile-image">
-                    <img className="tile-image__image" src={this.props.tile.image.source} alt={this.props.tile.image.alt} height="500px" />
+                    <img className="tile-image__image" draggable="false" src={this.props.tile.image.source} alt={this.props.tile.image.alt} height="500px" />
                 </div>
                 <div className="tile-image-splitter"></div>
                 <div className="tile-content">

@@ -10,7 +10,9 @@
         font-family: monospace, 'Monaco', Consolas, "Lucida Console";
         height: 55px;
         width: 55px;
-    
+        user-select: none;
+        cursor: default;
+
         .logo-header {
             height: 10px;
             border-radius: 5px 5px 0 0;
@@ -93,13 +95,13 @@
                 bottom: -13px;
                 width: 0;
                 height: 5px;
-                background-color: #BDF271;
+                background-color: #88F9D4;
                 transition: width 0.4s;
                 content: "";
             }
 
             &:hover {
-                color: #BDF271;
+                color: #88F9D4;
                 cursor: pointer;
 
                 &:after {
