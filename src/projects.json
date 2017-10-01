@@ -1,7 +1,7 @@
 [
     {
         "title": "Sky Sport Germany",
-        "description": "Built from the ground up, Sky Sport Germany has been the biggest and most rewarding porject I have worked on. I had a fantastic opportunity to work with an all start team to deliver a brand new Sports portal for German market from the ground up. Got the opportunity to work in an Agile environment which helped me fine tune my Software Engineering practices while liasing with key stake holders.",
+        "description": "Built from the ground up, Sky Sport Germany has been the biggest and most rewarding porject I have worked on. I was given a fantastic opportunity to work with a highly experienced to deliver a brand new Sports portal for the German market. I got the opportunity to work in an Agile environment while learning and collaborating with others which not only improved my coding abilities but my actual software engineering practices.",
         "image": {
             "source": "./images/skysport.jpg",
             "alt": "Sky Sport Germany"
@@ -23,9 +23,6 @@
                 "text": "HTML"
             },
             {
-                "text": "CSS"
-            },
-            {
                 "text": "SASS"
             }
         ],
@@ -33,6 +30,32 @@
             {
                 "text": "View Site",
                 "link": "https://sport.sky.de/"
+            }
+        ]
+    },
+    {
+        "title": "GitStats",
+        "description": "A small app that uses the GitHub API to filter the most stars and forked repositories with an option to filter by language. The main purpose of this project for me personally was to get an idea of the benefits of using PreactJS over React. It was a good learning process in which I had to do a lot more reading into the framework that I normally would do to learn how PreactJS can offer the same functionality as React but at a smaller bundle size.",
+        "image": {
+            "source": "./images/gitstats.jpg",
+            "alt": "GitStats"
+        },
+        "tags": [
+            {
+                "text": "PreactJS"
+            },
+            {
+                "text": "CSS"
+            }
+        ],
+        "buttons": [
+            {
+                "text": "View Source",
+                "link": "https://github.com/ivanseed/gitstats"
+            },
+            {
+                "text": "View Site",
+                "link": "https://gitstats.io"
             }
         ]
     },
@@ -52,9 +75,6 @@
             },
             {
                 "text": "SCSS"
-            },
-            {
-                "text": "Webkit"
             }
         ],
         "buttons": [
