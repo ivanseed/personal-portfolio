@@ -35,7 +35,7 @@
     },
     {
         "title": "GitStats",
-        "description": "A small app that uses the GitHub API to filter the most stars and forked repositories with an option to filter by language. The main purpose of this project for me personally was to get an idea of the benefits of using PreactJS over React. It was a good learning process in which I had to do a lot more reading into the framework that I normally would do to learn how PreactJS can offer the same functionality as React but at a smaller bundle size.",
+        "description": "A small app that uses the GitHub API to filter the most stars and forked repositories with an option to filter by language. The main purpose of this project for me personally was to get an idea of the benefits of using PreactJS over React. It was a good learning process in which I had to do a lot more reading into the framework that I normally would do to learn how PreactJS can offer the same functionality as React but at a smaller bundle size. I have since opened this project up to the Hacktoberfest project",
         "image": {
             "source": "./images/gitstats.jpg",
             "alt": "GitStats"

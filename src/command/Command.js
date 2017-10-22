@@ -14,13 +14,14 @@ class Command extends Component {
                 let formattedResult = [];
 
                 formattedResult.push('"');
-
-                if (result.link) {
+                if (result.download) {
+                  formattedResult.push(<a key={i} className="command-result__link" download={result.download} href={result.link}>{result.data}</a>);
+                } else if (result.link) {
                     formattedResult.push(<a key={i} className="command-result__link" rel="noopener noreferrer" target="_blank" href={result.link}>{result.data}</a>);
                 } else {
                     formattedResult.push(result.data);
                 }
-                
+
                 formattedResult.push('"');
 
                 if (i < resultsCount - 1) {
@@ -29,7 +30,7 @@ class Command extends Component {
 
                 resultData.push(formattedResult);
             }
-            
+
             if (resultsCount > 1) {
                 resultData.unshift('[');
                 resultData.push(']');
