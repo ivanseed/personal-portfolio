@@ -7,5 +7,3 @@ Don't expect to see test coverage anytime soon :D.
 `npm run watch-css` to transpile the scss.
 
 `npm start` to run locally, just like a basic Create React App...
-
-Inspired by Justin Chi, [vai0](https://github.com/vai0)

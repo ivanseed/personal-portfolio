@@ -31,7 +31,7 @@ class App extends Component {
           </div>
           <div className="header__intro">
             <p>
-              Hey my name is <span className="header__name">Ivan Seed</span>, I'm a web developer. I aim to provide simple and elegant solutions that help accomplish goals.
+              I'm <span className="header__name">Ivan Seed</span>, a developer living in Leeds currently working for Sky working on their Sports and News sites.
             </p>
           </div>
           <Terminal commands={this.state.commands} />

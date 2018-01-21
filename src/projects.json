@@ -1,7 +1,7 @@
 [
     {
         "title": "Sky Sport Germany",
-        "description": "Built from the ground up, Sky Sport Germany has been the biggest and most rewarding porject I have worked on. I was given a fantastic opportunity to work with a highly experienced to deliver a brand new Sports portal for the German market. I got the opportunity to work in an Agile environment while learning and collaborating with others which not only improved my coding abilities but my actual software engineering practices.",
+        "description": "Built from the ground up, Sky Sport Germany has been the biggest and most rewarding project I have worked on. I was given a fantastic opportunity to work with a highly experienced team to deliver a brand new Sports portal for Sky Deutschland. I got hands on experience working in an agile environment, learning and collaborating with others which greatly improved my coding skills and also my software engineering practices.",
         "image": {
             "source": "./images/skysport.jpg",
             "alt": "Sky Sport Germany"
@@ -35,7 +35,7 @@
     },
     {
         "title": "GitStats",
-        "description": "A small app that uses the GitHub API to filter the most stars and forked repositories with an option to filter by language. The main purpose of this project for me personally was to get an idea of the benefits of using PreactJS over React. It was a good learning process in which I had to do a lot more reading into the framework that I normally would do to learn how PreactJS can offer the same functionality as React but at a smaller bundle size. I have since opened this project up to the Hacktoberfest project",
+        "description": "A small app that uses the GitHub API to filter the most stars and forked repositories with the option to filter by language. The main purpose of this project for me personally was to get an idea of the benefits of using PreactJS over React so I could then apply it at Sky. It was a good learning process in which I had to do a lot more reading into the framework that I normally would do to learn how PreactJS can offer the same functionality as React but at a smaller bundle size. I also opened this project to Hacktoberfest which gave me experience opening up a project to become more open sourced.",
         "image": {
             "source": "./images/gitstats.jpg",
             "alt": "GitStats"
@@ -64,7 +64,7 @@
     },
     {
         "title": "Portfolio",
-        "description": "Got to fill up this project list somehow, am I right? My portfolio has gone through many different designs, however after being inspired by a post online of a data driven portfolio I created this. Sections powered by JSON files so I need only update them. the entire project is on GitHub if you want to see how it works it was also was a great excuse to practice some ReactJS!",
+        "description": "Got to fill up this project list somehow, am I right? My portfolio has gone through many different designs, however after being inspired by a post online of a data driven portfolio I created this. Sections powered by JSON files so I need only update them. the entire project is on GitHub if you want to see how it works it was also was a great excuse to practice some ReactJS.",
         "image": {
             "source": "./images/portfolio.jpg",
             "alt": "Portfolio"

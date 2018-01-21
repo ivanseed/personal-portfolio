@@ -1,6 +1,6 @@
 [
     {
-        "argument": "ivan -location",
+        "argument": "ivan --location",
         "results": [
         {
             "data": "Leeds, UK"
@@ -8,25 +8,25 @@
         ]
     },
     {
-        "argument": "ivan -cv",
+        "argument": "ivan --cv",
         "results": [
         {
             "link": "./cv.pdf",
             "data": "ivanseed.pdf",
-            "download": "Ivan Seed - CV"
+            "download": "Ivan Seed -- CV"
         }
         ]
     },
     {
-        "argument": "ivan -role",
+        "argument": "ivan --role",
         "results": [
         {
-            "data": "Associate Software Developer, Sky PLC"
+            "data": "Developer, Sky PLC"
         }
         ]
     },
     {
-        "argument": "ivan -social",
+        "argument": "ivan --social",
         "results": [
         {
             "link": "https://github.com/ivanseed",
@@ -39,7 +39,7 @@
         ]
     },
     {
-        "argument": "ivan -education",
+        "argument": "ivan --education",
         "results" : [
         {
             "data": "Computer Science BSc (Honours), Newcastle University"
@@ -47,22 +47,25 @@
         ]
     },
     {
-        "argument": "ivan -skills",
+        "argument": "ivan --skills",
         "results": [
         {
-            "data": "Java"
+            "data": "PHP"
         },
         {
             "data": "JavaScript"
         },
         {
-            "data": "PHP"
+            "data": "Java"
+        },
+        {
+            "data": "C++"
         },
         {
             "data": "AWS"
         },
         {
-            "data": "ReactJS"
+            "data": "Blockchain"
         },
         {
             "data": "TDD"
