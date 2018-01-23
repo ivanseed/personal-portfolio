@@ -25,13 +25,12 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <div className="diagonal-background"></div>
         <div className="header">
           <div className="navbar">
           </div>
           <div className="header__intro">
             <p>
-              I'm <span className="header__name">Ivan Seed</span>, a developer living in Leeds currently working for Sky working on their Sports and News sites.
+              I'm <span className="header__name">Ivan Seed</span>, a developer living in Leeds currently working for Sky on their Sports and News sites.
             </p>
           </div>
           <Terminal commands={this.state.commands} />
