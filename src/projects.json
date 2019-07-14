@@ -1,5 +1,37 @@
 [
     {
+        "title": "Moving Places",
+        "description": "A React application that allows you to compare the cost of living of two cities. I started this taking some inspiration of another similar application, I wanted to create this application as an excuse to learn some React Hooks as it was a while since I worked with React. Hopefully if I can gather some feedback on the website I will continue to do some updates on it as it can be a useful tool for those thinking of moving cities.",
+        "image": {
+            "source": "./images/movingplaces.jpg",
+            "alt": "Moving Places"
+        },
+        "tags": [
+            {
+                "text": "JavaScript"
+            },
+            {
+                "text": "React"
+            },
+            {
+                "text": "HTML"
+            },
+            {
+                "text": "CSS"
+            }
+        ],
+        "buttons": [
+            {
+                "text": "View Source",
+                "link": "https://github.com/ivanseed/cost-of-living"
+            },
+            {
+                "text": "View Site",
+                "link": "https://movingplaces.io/"
+            }
+        ]
+    },
+    {
         "title": "Sky Sport Germany",
         "description": "Built from the ground up, Sky Sport Germany has been the biggest and most rewarding project I have worked on. I was given a fantastic opportunity to work with a highly experienced team to deliver a brand new Sports portal for Sky Deutschland. I got hands on experience working in an agile environment, learning and collaborating with others which greatly improved my coding skills and also my software engineering practices.",
         "image": {
@@ -42,6 +74,9 @@
         },
         "tags": [
             {
+                "text": "JavaScript"
+            },
+            {
                 "text": "PreactJS"
             },
             {
@@ -58,7 +93,7 @@
             },
             {
                 "text": "View Site",
-                "link": "https://gitstats.io"
+                "link": "https://ivanseed.github.io/gitstats"
             }
         ]
     },
@@ -70,6 +105,9 @@
             "alt": "Portfolio"
         },
         "tags": [
+            {
+                "text": "JavaScript"
+            },
             {
                 "text": "ReactJS"
             },
