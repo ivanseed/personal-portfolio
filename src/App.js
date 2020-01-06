@@ -30,7 +30,7 @@ class App extends Component {
           </div>
           <div className="header__intro">
             <p>
-              I'm <span className="header__name">Ivan Seed</span>, a developer living in Leeds currently working for Sky on their Sports and News sites.
+              Hey, I'm <span className="header__name">Ivan Seed</span>. I work as a Consultant at Infinity Works where I help clients solve complex problems.
             </p>
           </div>
           <Terminal commands={this.state.commands} />

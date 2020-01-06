@@ -10,6 +10,9 @@
     {
         "argument": "ivan --cv",
         "results": [
+            {
+                "data": "# Deprecated since 2018, please ask for an up-to-date version"
+            },
         {
             "link": "./cv.pdf",
             "data": "ivanseed.pdf",
@@ -21,7 +24,7 @@
         "argument": "ivan --role",
         "results": [
         {
-            "data": "Developer, Sky PLC"
+            "data": "Consultant, Infinity Works"
         }
         ]
     },
@@ -42,7 +45,7 @@
         "argument": "ivan --education",
         "results" : [
         {
-            "data": "Computer Science BSc (Honours), Newcastle University"
+            "data": "Computer Science BSc, Newcastle University"
         }
         ]
     },
@@ -50,16 +53,16 @@
         "argument": "ivan --skills",
         "results": [
         {
-            "data": "PHP"
-        },
-        {
             "data": "JavaScript"
         },
         {
-            "data": "Java"
+            "data": "PHP"
         },
         {
-            "data": "C++"
+            "data": "Node"
+        },
+        {
+            "data": "React"
         },
         {
             "data": "AWS"
@@ -73,6 +76,23 @@
         {
             "data": "Agile"
         }
+        ]
+    },
+    {
+        "argument": "ivan --certifications",
+        "results": [
+            {
+                "link": "https://www.certmetrics.com/amazon/public/badge.aspx?i=1&t=c&d=2019-09-20&ci=AWS00983344",
+                "data": "AWS - Associate Solutions Architect"
+            },
+            {
+                "link": "https://www.credential.net/e36af530-ca0a-4f51-9020-7b07370f4c31",
+                "data": "GCP - Associate Cloud Engineer"
+            },
+            {
+                "link": "https://www.scrum.org/certificates/463042",
+                "data": "PSM 1 - Professional Scrum Master"
+            }
         ]
     }
 ]
