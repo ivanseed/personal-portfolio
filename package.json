@@ -9,7 +9,7 @@
     "smoothscroll-polyfill": "^0.3.5"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7",
+    "react-scripts": "5.0.1",
     "react-snapshot": "^1.2.0"
   },
   "scripts": {
