@@ -1,23 +1,32 @@
 {
-  "name": "ivanseed.github.io",
-  "version": "0.1.0",
+  "name": "ivanseed-portfolio",
   "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
   "dependencies": {
-    "node-sass-chokidar": "0.0.3",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "smoothscroll-polyfill": "^0.3.5"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7",
-    "react-snapshot": "^1.2.0"
-  },
-  "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start": "react-scripts start",
-    "build": "react-scripts docs && react-snapshot",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.14.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
   }
 }
