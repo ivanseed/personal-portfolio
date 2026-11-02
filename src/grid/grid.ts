@@ -54,9 +54,9 @@ export function cellsBetween(a: Cell, b: Cell): Cell[] {
 
 /** Fade every trail cell by elapsed time; removes cells that reach zero. Mutates and returns the map. */
 export function decayTrail(trail: Map<string, number>, elapsedMs: number, fadeMs: number): Map<string, number> {
-  const step = elapsedMs / fadeMs;
+  const step = Math.max(0, elapsedMs) / fadeMs;
   for (const [key, value] of trail) {
-    const next = value - step;
+    const next = Math.min(1, value - step);
     if (next <= 0) trail.delete(key);
     else trail.set(key, next);
   }

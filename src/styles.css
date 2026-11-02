@@ -8,6 +8,10 @@
   --grad-a: #c6f36b;
   --grad-b: #a8e3f0;
   --grad-glyph: #ffffff;
+  /* Deeper versions of the gradient so the hover glow shows on a light background. */
+  --glow-a: #8ccf2e;
+  --glow-b: #3fb3d4;
+  --row-hover: color-mix(in srgb, var(--grad-a) 18%, transparent);
   --focus: #3a8f6a;
 
   color-scheme: light dark;
@@ -28,6 +32,9 @@
     --grad-a: #6d4aff;
     --grad-b: #d58cff;
     --grad-glyph: #ffffff;
+    --glow-a: #8b6cff;
+    --glow-b: #e0a3ff;
+    --row-hover: color-mix(in srgb, var(--grad-a) 16%, transparent);
     --focus: #b794ff;
   }
 }
@@ -102,13 +109,16 @@ body {
   margin: 0.5rem 0 0;
   color: var(--muted);
   line-height: 1.5;
-  max-width: 34ch;
+  max-width: 44ch;
 }
 
-/* Each link is exactly one cell tall so the rows follow the grid. */
+/*
+ * Each link is exactly one cell tall and spans the full card width, so rows
+ * follow the grid and the whole row can highlight on hover.
+ */
 .links {
   list-style: none;
-  margin: 0 calc(var(--cell) * -1) 0 0;
+  margin: 0 calc(var(--cell) * -1);
   padding: 0;
   border-top: 1px solid var(--card-border);
 }
@@ -119,7 +129,7 @@ body {
   gap: 1rem;
   width: 100%;
   height: var(--cell);
-  padding: 0;
+  padding: 0 0 0 var(--cell);
   border: 0;
   border-bottom: 1px solid var(--card-border);
   background: none;
@@ -128,10 +138,22 @@ body {
   text-align: left;
   text-decoration: none;
   cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  background: linear-gradient(90deg, var(--row-hover), transparent 85%);
 }
 
 .link__label {
   font-weight: 600;
+  transition: transform 150ms ease;
+}
+
+.link:hover .link__label,
+.link:focus-visible .link__label {
+  transform: translateX(4px);
 }
 
 .link__detail {
@@ -142,6 +164,15 @@ body {
   white-space: nowrap;
   color: var(--muted);
   font-size: 0.9rem;
+  transition:
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.link:hover .link__detail,
+.link:focus-visible .link__detail {
+  color: var(--text);
+  transform: translateX(4px);
 }
 
 .link__icon {
@@ -166,7 +197,7 @@ body {
 
 .link:focus-visible {
   outline: 2px solid var(--focus);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .visually-hidden {
@@ -179,7 +210,17 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .link,
+  .link__label,
+  .link__detail,
   .link__icon {
     transition: none;
+  }
+
+  .link:hover .link__label,
+  .link:focus-visible .link__label,
+  .link:hover .link__detail,
+  .link:focus-visible .link__detail {
+    transform: none;
   }
 }

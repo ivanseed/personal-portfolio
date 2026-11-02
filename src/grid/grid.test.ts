@@ -65,6 +65,12 @@ describe('decayTrail', () => {
     expect(trail.get('0,0')).toBeCloseTo(0.8);
     expect(trail.has('1,0')).toBe(false);
   });
+
+  it('never brightens cells when elapsed time is negative', () => {
+    const trail = new Map([['0,0', 1]]);
+    decayTrail(trail, -500, 1000);
+    expect(trail.get('0,0')).toBe(1);
+  });
 });
 
 describe('togglePin', () => {

@@ -28,6 +28,6 @@ export const profile = {
   name: 'Ivan Seed',
   role: 'Senior Technical Account Manager',
   company: 'AWS',
-  bio: 'I help AWS customers design, run and optimise their workloads in the cloud.',
+  bio: "I help some of AWS's largest enterprise customers solve complex problems and get the most out of AWS. Along the way, I've built internal tools that are now used across the TAM community.",
   links,
 };
