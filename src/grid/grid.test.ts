@@ -1,5 +1,38 @@
 import { describe, expect, it } from 'vitest';
-import { blockContains, cellAt, cellsBetween, decayTrail, parsePins, togglePin } from './grid';
+import {
+  blockCells,
+  blockContains,
+  cellAt,
+  cellsBetween,
+  connectedGroups,
+  decayTrail,
+  parsePins,
+  togglePin,
+} from './grid';
+
+describe('connectedGroups', () => {
+  it('groups edge-adjacent cells and reports their bounds', () => {
+    const groups = connectedGroups(['0,0', '1,0', '1,1', '5,5', '6,6']);
+    expect(groups).toHaveLength(3);
+    const big = groups.find((g) => g.cells.length === 3)!;
+    expect(big.bounds).toEqual({ x: 0, y: 0, w: 2, h: 2 });
+  });
+
+  it('does not join diagonal neighbours', () => {
+    expect(connectedGroups(['0,0', '1,1'])).toHaveLength(2);
+  });
+});
+
+describe('blockCells', () => {
+  it('lists every cell in a block', () => {
+    expect(blockCells({ x: 1, y: 2, w: 2, h: 2 })).toEqual([
+      { x: 1, y: 2 },
+      { x: 2, y: 2 },
+      { x: 1, y: 3 },
+      { x: 2, y: 3 },
+    ]);
+  });
+});
 
 describe('cellAt', () => {
   it('maps pixels to cells relative to the origin', () => {

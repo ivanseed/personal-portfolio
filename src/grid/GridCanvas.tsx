@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef } from 'react';
 import {
+  blockCells,
   blockContains,
   cellAt,
   cellKey,
   cellsBetween,
+  connectedGroups,
   decayTrail,
   decorBlocks,
-  parseKey,
-  type Block,
   type Cell,
 } from './grid';
 
@@ -32,13 +32,12 @@ interface Palette {
   line: string;
   gradA: string;
   gradB: string;
-  glyph: string;
 }
 
 function readPalette(el: HTMLElement): Palette {
   const css = getComputedStyle(el);
   const v = (name: string) => css.getPropertyValue(name).trim();
-  return { line: v('--grid-line'), gradA: v('--grad-a'), gradB: v('--grad-b'), glyph: v('--grad-glyph') };
+  return { line: v('--grid-line'), gradA: v('--grad-a'), gradB: v('--grad-b') };
 }
 
 /**
@@ -81,34 +80,24 @@ export function GridCanvas({ size, origin, cols, rows, pins, onToggle, reducedMo
     let width = 0;
     let height = 0;
 
-    const fillCells = (b: Block, alpha: number, s: number, ox: number, oy: number) => {
-      const x = ox + b.x * s;
-      const y = oy + b.y * s;
-      const w = b.w * s;
-      const h = b.h * s;
-      const g = ctx.createLinearGradient(x, y + h, x + w, y);
-      g.addColorStop(0, palette.gradA);
-      g.addColorStop(1, palette.gradB);
-      ctx.globalAlpha = alpha;
-      ctx.fillStyle = g;
-      ctx.fillRect(x, y, w, h);
-    };
-
-    const drawArrow = (b: Block, alpha: number, s: number, ox: number, oy: number) => {
-      const x = ox + b.x * s;
-      const y = oy + b.y * s;
-      const p = s * 0.28;
-      ctx.globalAlpha = alpha;
-      ctx.strokeStyle = palette.glyph;
-      ctx.lineWidth = Math.max(2, s / 16);
-      ctx.lineCap = 'square';
-      ctx.beginPath();
-      ctx.moveTo(x + p, y + s - p);
-      ctx.lineTo(x + s - p, y + p);
-      ctx.moveTo(x + s * 0.45, y + p);
-      ctx.lineTo(x + s - p, y + p);
-      ctx.lineTo(x + s - p, y + s * 0.55);
-      ctx.stroke();
+    /**
+     * Paint filled cells. Touching cells share one gradient stretched across
+     * their bounding box, so a cluster reads as a single shape.
+     */
+    const paintFilled = (alphas: Map<string, number>, s: number, ox: number, oy: number) => {
+      for (const { cells, bounds } of connectedGroups(alphas.keys())) {
+        const x = ox + bounds.x * s;
+        const y = oy + bounds.y * s;
+        const g = ctx.createLinearGradient(x, y + bounds.h * s, x + bounds.w * s, y);
+        g.addColorStop(0, palette.gradA);
+        g.addColorStop(1, palette.gradB);
+        ctx.fillStyle = g;
+        for (const c of cells) {
+          ctx.globalAlpha = alphas.get(cellKey(c))!;
+          ctx.fillRect(ox + c.x * s, oy + c.y * s, s, s);
+        }
+      }
+      ctx.globalAlpha = 1;
     };
 
     draw.current = (now: number) => {
@@ -138,25 +127,25 @@ export function GridCanvas({ size, origin, cols, rows, pins, onToggle, reducedMo
       }
       ctx.stroke();
 
+      // Collect every filled cell with its opacity; where sources overlap the strongest wins.
+      const alphas = new Map<string, number>();
+      const fill = (key: string, alpha: number) => {
+        if (alpha > 0.02) alphas.set(key, Math.max(alpha, alphas.get(key) ?? 0));
+      };
+
       // Decorative blocks fade in one after another on first load.
       let introRunning = false;
       blocks.forEach((b, i) => {
         const t = still ? 1 : (now - introStart.current! - i * INTRO_STAGGER_MS) / INTRO_FADE_MS;
         const alpha = Math.max(0, Math.min(1, t));
         if (alpha < 1) introRunning = true;
-        if (alpha > 0) {
-          fillCells(b, alpha, s, o.x, o.y);
-          if (b.arrow) drawArrow(b, alpha, s, o.x, o.y);
-        }
+        for (const c of blockCells(b)) fill(cellKey(c), alpha);
       });
+      for (const key of pinned) fill(key, 1);
+      // Ease out so trail cells linger, then drop away.
+      for (const [key, value] of trail.current) fill(key, value * value * 0.85);
 
-      for (const key of pinned) fillCells({ ...parseKey(key), w: 1, h: 1 }, 1, s, o.x, o.y);
-
-      for (const [key, value] of trail.current) {
-        // Ease out so cells linger, then drop away.
-        fillCells({ ...parseKey(key), w: 1, h: 1 }, value * value * 0.85, s, o.x, o.y);
-      }
-      ctx.globalAlpha = 1;
+      paintFilled(alphas, s, o.x, o.y);
 
       if (trail.current.size > 0 || introRunning) {
         frame.current = requestAnimationFrame(draw.current);

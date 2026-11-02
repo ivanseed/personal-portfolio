@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { profile } from './content';
+import { LinkRow } from './LinkRow';
 import { GridCanvas } from './grid/GridCanvas';
 import { parsePins, togglePin, type Cell } from './grid/grid';
 import { useMediaQuery, useViewportWidth } from './hooks';
@@ -24,7 +25,6 @@ function loadPins(): Set<string> {
 export default function App() {
   const viewport = useViewportWidth();
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
-  const touch = useMediaQuery('(hover: none)');
   const { size, cols } = layoutFor(viewport);
 
   const mainRef = useRef<HTMLElement>(null);
@@ -107,31 +107,12 @@ export default function App() {
           <ul className="links">
             {profile.links.map((link) => (
               <li key={link.label}>
-                <a
-                  className="link"
-                  href={link.href}
-                  {...(link.href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
-                >
-                  <span className="link__label">{link.label}</span>
-                  <span className="link__detail">{link.detail}</span>
-                  <span className="link__arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </a>
+                <LinkRow link={link} />
               </li>
             ))}
           </ul>
         </div>
       </article>
-
-      <footer className="hint">
-        <span>{touch ? 'Tap a square to colour it in.' : 'Move to paint the grid. Click a square to keep it.'}</span>
-        {pins.size > 0 && (
-          <button type="button" className="hint__reset" onClick={() => setPins(new Set())}>
-            Clear {pins.size}
-          </button>
-        )}
-      </footer>
     </main>
   );
 }

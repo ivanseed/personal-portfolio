@@ -97,18 +97,61 @@ export function parsePins(raw: string | null): Set<string> {
  * Decorative gradient blocks placed around the card, echoing the reference design.
  * Positions are relative to the card's top-left cell; cols/rows are the card size in cells.
  */
-export interface DecorBlock extends Block {
-  /** Draw a "↗" glyph inside the block. */
-  arrow?: boolean;
-}
-
-export function decorBlocks(cols: number, rows: number): DecorBlock[] {
+export function decorBlocks(cols: number, rows: number): Block[] {
   return [
     { x: -3, y: -2, w: 3, h: 2 },
     { x: cols + 2, y: 1, w: 2, h: 2 },
     { x: cols, y: 3, w: 2, h: 2 },
-    { x: cols, y: rows, w: 1, h: 1, arrow: true },
     { x: -4, y: rows + 2, w: 2, h: 3 },
     { x: Math.floor(cols / 2), y: rows + 4, w: 3, h: 1 },
   ];
+}
+
+export interface CellGroup {
+  cells: Cell[];
+  /** Bounding box of the group, used to stretch one gradient across all its cells. */
+  bounds: Block;
+}
+
+/** Split filled cells into groups of edge-adjacent cells (up/down/left/right). */
+export function connectedGroups(keys: Iterable<string>): CellGroup[] {
+  const remaining = new Set(keys);
+  const groups: CellGroup[] = [];
+  for (const start of remaining) {
+    remaining.delete(start);
+    const cells: Cell[] = [];
+    const queue = [start];
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    while (queue.length > 0) {
+      const cell = parseKey(queue.pop()!);
+      cells.push(cell);
+      minX = Math.min(minX, cell.x);
+      minY = Math.min(minY, cell.y);
+      maxX = Math.max(maxX, cell.x);
+      maxY = Math.max(maxY, cell.y);
+      for (const [dx, dy] of [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ]) {
+        const key = cellKey({ x: cell.x + dx, y: cell.y + dy });
+        if (remaining.delete(key)) queue.push(key);
+      }
+    }
+    groups.push({ cells, bounds: { x: minX, y: minY, w: maxX - minX + 1, h: maxY - minY + 1 } });
+  }
+  return groups;
+}
+
+/** Every cell covered by a block. */
+export function blockCells(block: Block): Cell[] {
+  const cells: Cell[] = [];
+  for (let y = block.y; y < block.y + block.h; y++) {
+    for (let x = block.x; x < block.x + block.w; x++) cells.push({ x, y });
+  }
+  return cells;
 }

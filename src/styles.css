@@ -19,16 +19,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1211;
-    --card-bg: #151918;
-    --card-border: #262c2a;
-    --grid-line: #1c2120;
-    --text: #eef1ef;
-    --muted: #8e9692;
-    --grad-a: #9fd94a;
-    --grad-b: #6fc6d9;
-    --grad-glyph: #0f1211;
-    --focus: #9fd94a;
+    --bg: #0f0f14;
+    --card-bg: #16161d;
+    --card-border: #27272f;
+    --grid-line: #1c1c24;
+    --text: #efeef4;
+    --muted: #9493a3;
+    --grad-a: #6d4aff;
+    --grad-b: #d58cff;
+    --grad-glyph: #ffffff;
+    --focus: #b794ff;
   }
 }
 
@@ -117,10 +117,17 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
   height: var(--cell);
+  padding: 0;
+  border: 0;
   border-bottom: 1px solid var(--card-border);
+  background: none;
   color: inherit;
+  font: inherit;
+  text-align: left;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .link__label {
@@ -137,7 +144,7 @@ body {
   font-size: 0.9rem;
 }
 
-.link__arrow {
+.link__icon {
   display: grid;
   place-items: center;
   flex: none;
@@ -150,49 +157,29 @@ body {
     background 150ms ease;
 }
 
-.link:hover .link__arrow,
-.link:focus-visible .link__arrow {
+.link:hover .link__icon,
+.link:focus-visible .link__icon,
+.link__icon--done {
   color: var(--grad-glyph);
   background: linear-gradient(45deg, var(--grad-a), var(--grad-b));
 }
 
-.link:focus-visible,
-.hint__reset:focus-visible {
+.link:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
-.hint {
+.visually-hidden {
   position: absolute;
-  bottom: calc(var(--cell) * 0.5);
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  pointer-events: none;
-}
-
-.hint__reset {
-  pointer-events: auto;
-  font: inherit;
-  color: var(--text);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  padding: 0.25rem 0.6rem;
-  cursor: pointer;
-}
-
-.hint__reset:hover {
-  background: linear-gradient(45deg, var(--grad-a), var(--grad-b));
-  color: #111312;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .link__arrow {
+  .link__icon {
     transition: none;
   }
 }
