@@ -1,9 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+# ivanseed.co.uk
 
-Json powered ReactJS portfolio. Take a dig around. Probably not the best code you will ever see but I will try to improve it when I get time.
+Single-page personal site. React 19 + TypeScript + Vite, deployed to GitHub Pages.
 
-Don't expect to see test coverage anytime soon :D.
+The background is an interactive grid drawn on a canvas: moving the pointer paints a fading gradient trail, and clicking (or tapping) a square keeps it coloured in. Kept squares are saved in `localStorage`. The page follows the system light/dark theme and respects reduced-motion settings.
 
-`npm run watch-css` to transpile the scss.
+## Editing content
 
-`npm start` to run locally, just like a basic Create React App...
+All copy is in `src/content.ts`.
+
+## Commands
+
+| Action | Command |
+| --- | --- |
+| Dev server | `npm run dev` |
+| Lint | `npm run lint` |
+| Type check | `npm run typecheck` |
+| Tests | `npm test` |
+| Production build | `npm run build` |
+| Preview build | `npm run preview` |
+
+## Deployment
+
+Pushing to `master` runs `.github/workflows/deploy.yml`, which lints, tests, builds and publishes `dist/` to GitHub Pages. The custom domain comes from `public/CNAME`.
+
+One-time setup: in the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
