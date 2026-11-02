@@ -97,7 +97,16 @@ export function parsePins(raw: string | null): Set<string> {
  * Decorative gradient blocks placed around the card, echoing the reference design.
  * Positions are relative to the card's top-left cell; cols/rows are the card size in cells.
  */
-export function decorBlocks(cols: number, rows: number): Block[] {
+export function decorBlocks(cols: number, rows: number, compact = false): Block[] {
+  if (compact) {
+    // Full-width card on phones: keep blocks above and below it, inside the screen.
+    return [
+      { x: 0, y: -2, w: 2, h: 1 },
+      { x: cols - 3, y: -2, w: 2, h: 2 },
+      { x: cols - 2, y: rows + 1, w: 2, h: 2 },
+      { x: 1, y: rows + 2, w: 3, h: 1 },
+    ];
+  }
   return [
     { x: -3, y: -2, w: 3, h: 2 },
     { x: cols + 2, y: 1, w: 2, h: 2 },

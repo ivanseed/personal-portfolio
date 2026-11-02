@@ -7,8 +7,16 @@ import { useMediaQuery, useViewportWidth } from './hooks';
 
 const PINS_KEY = 'grid-pins';
 
+const FULL_WIDTH_BELOW = 600;
+
 function layoutFor(viewport: number) {
-  const size = viewport >= 900 ? 56 : viewport >= 600 ? 48 : 40;
+  // Phones: the card spans the full width, so pick a cell size that divides
+  // the viewport exactly and keeps the grid lined up with both screen edges.
+  if (viewport < FULL_WIDTH_BELOW) {
+    const cols = Math.max(7, Math.round(viewport / 44));
+    return { size: viewport / cols, cols };
+  }
+  const size = viewport >= 900 ? 56 : 48;
   const maxCols = viewport >= 900 ? 10 : 9;
   const cols = Math.max(6, Math.min(maxCols, Math.floor(viewport / size) - 2));
   return { size, cols };
@@ -57,10 +65,15 @@ export default function App() {
     const main = mainRef.current;
     const card = cardRef.current;
     if (!main || !card) return;
-    const measure = () =>
-      setOrigin((prev) =>
-        prev.x === card.offsetLeft && prev.y === card.offsetTop ? prev : { x: card.offsetLeft, y: card.offsetTop },
-      );
+    // Use bounding rects rather than offsetLeft/Top, which round to whole pixels
+    // and would drift from fractional cell sizes on phones.
+    const measure = () => {
+      const m = main.getBoundingClientRect();
+      const c = card.getBoundingClientRect();
+      const x = c.left - m.left;
+      const y = c.top - m.top;
+      setOrigin((prev) => (prev.x === x && prev.y === y ? prev : { x, y }));
+    };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(main);
@@ -92,6 +105,7 @@ export default function App() {
         pins={pins}
         onToggle={onToggle}
         reducedMotion={reducedMotion}
+        compact={viewport < FULL_WIDTH_BELOW}
       />
 
       <article ref={cardRef} className="card" style={{ width: cols * size, height: rows * size }}>

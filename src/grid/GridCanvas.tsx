@@ -27,6 +27,8 @@ interface Props {
   pins: ReadonlySet<string>;
   onToggle: (cell: Cell) => void;
   reducedMotion: boolean;
+  /** Card spans the full screen width (phones); decor stays above and below it. */
+  compact: boolean;
 }
 
 interface Palette {
@@ -53,7 +55,7 @@ function readPalette(el: HTMLElement): Palette {
  * Full-bleed canvas grid. Moving the pointer leaves a fading trail of glowing cell borders;
  * clicking an empty cell pins it. Only animates while something is changing.
  */
-export function GridCanvas({ size, origin, cols, rows, pins, onToggle, reducedMotion }: Props) {
+export function GridCanvas({ size, origin, cols, rows, pins, onToggle, reducedMotion, compact }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Mutable render state lives in refs so pointer events never trigger React renders.
@@ -69,7 +71,7 @@ export function GridCanvas({ size, origin, cols, rows, pins, onToggle, reducedMo
     if (!frame.current) frame.current = requestAnimationFrame((t) => draw.current(t));
   }, []);
 
-  const decor = decorBlocks(cols, rows);
+  const decor = decorBlocks(cols, rows, compact);
   const isDecor = (c: Cell) => decor.some((b) => blockContains(b, c));
 
   // Latest props for the draw loop, updated after each render.
@@ -103,7 +105,11 @@ export function GridCanvas({ size, origin, cols, rows, pins, onToggle, reducedMo
         ctx.fillStyle = g;
         for (const c of cells) {
           ctx.globalAlpha = alphas.get(cellKey(c))!;
-          ctx.fillRect(ox + c.x * s, oy + c.y * s, s, s);
+          // Snap to whole pixels (as the grid lines are) so fractional cell
+          // sizes on phones don't leave hairline seams between filled cells.
+          const x0 = Math.round(ox + c.x * s);
+          const y0 = Math.round(oy + c.y * s);
+          ctx.fillRect(x0, y0, Math.round(ox + (c.x + 1) * s) - x0, Math.round(oy + (c.y + 1) * s) - y0);
         }
       }
       ctx.globalAlpha = 1;
@@ -130,7 +136,14 @@ export function GridCanvas({ size, origin, cols, rows, pins, onToggle, reducedMo
           const c = parseKey(key);
           // Ease out so cells linger, then drop away.
           ctx.globalAlpha = value * value * opacity;
-          ctx.strokeRect(ox + c.x * s + 0.5, oy + c.y * s + 0.5, s, s);
+          const x0 = Math.round(ox + c.x * s);
+          const y0 = Math.round(oy + c.y * s);
+          ctx.strokeRect(
+            x0 + 0.5,
+            y0 + 0.5,
+            Math.round(ox + (c.x + 1) * s) - x0,
+            Math.round(oy + (c.y + 1) * s) - y0,
+          );
         }
       }
       ctx.restore();
@@ -247,7 +260,7 @@ export function GridCanvas({ size, origin, cols, rows, pins, onToggle, reducedMo
   useEffect(() => {
     cancelAnimationFrame(frame.current);
     draw.current(performance.now());
-  }, [size, origin.x, origin.y, cols, rows, pins, reducedMotion]);
+  }, [size, origin.x, origin.y, cols, rows, pins, reducedMotion, compact]);
 
   const onClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
